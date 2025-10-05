@@ -1,0 +1,32 @@
+# Nama workflow Anda, akan muncul di tab "Actions"
+name: Tes Workflow Pertama
+
+# Tentukan pemicu (event) kapan workflow ini akan berjalan
+on:
+  # Workflow ini akan berjalan setiap kali ada 'push' ke branch 'main'
+  push:
+    branches: [ main ]
+  
+  # Baris ini memungkinkan Anda menjalankan workflow secara manual dari tab Actions
+  workflow_dispatch:
+
+# Definisikan pekerjaan (jobs) yang akan dijalankan
+jobs:
+  # Beri nama untuk job pertama Anda (bisa apa saja)
+  build-and-test:
+    # Tentukan sistem operasi runner yang akan digunakan
+    runs-on: ubuntu-latest
+
+    # Definisikan langkah-langkah (steps) yang akan dieksekusi
+    steps:
+      # Langkah 1: Mengambil (checkout) kode dari repositori Anda
+      - name: Checkout Repository Code
+        uses: actions/checkout@v4
+
+      # Langkah 2: Menampilkan teks sederhana
+      - name: Menjalankan Perintah Echo
+        run: echo "🎉 Selamat! GitHub Actions berhasil berjalan di akun Anda."
+
+      # Langkah 3: Menampilkan struktur file
+      - name: Menampilkan Isi Direktori
+        run: ls -la
